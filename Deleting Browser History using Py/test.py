@@ -6,11 +6,12 @@ cur = conn.cursor()
 
 id = 0
 result = True
-
+var=input("Enter Keyword: ")
+t='%'+var+'%'
 while result:
     result = False
     ids=[]
-    for row in cur.execute("SELECT id,url FROM urls WHERE url LIKE '%youtube%'"):
+    for row in cur.execute("SELECT id,url FROM urls WHERE url Like ?",(t,)):
         print(row)
         id = row[0]
         ids.append((id,))
